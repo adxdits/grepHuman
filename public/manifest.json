@@ -5,7 +5,17 @@
   "version": "1.0.0",
   "action": {
     "default_popup": "index.html",
-    "default_title": "Open Angular Extension"
+    "default_title": "Open grepHuman",
+    "default_icon": {
+      "16": "icons/logoSquare.png",
+      "48": "icons/logoSquare.png",
+      "128": "icons/logoSquare.png"
+    }
+  },
+  "icons": {
+    "16": "icons/logoSquare.png",
+    "48": "icons/logoSquare.png",
+    "128": "icons/logoSquare.png"
   },
   "permissions": []
 }

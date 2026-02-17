@@ -1,47 +1,13 @@
-<main class="popup-container">
-  <header class="popup-header">
-    <h1>{{ title() }}</h1>
-  </header>
+<mat-toolbar color="primary">
+  <mat-icon>search</mat-icon>
+  <span class="title">{{ title() }}</span>
+</mat-toolbar>
 
-  <section class="popup-content">
-    <p class="message">{{ message() }}</p>
-
-    <div class="button-group">
-      <button
-        type="button"
-        class="action-button"
-        (click)="incrementCount()"
-        aria-label="Click to increment counter">
-        Click Me
-      </button>
-      <button
-        type="button"
-        class="action-button secondary"
-        (click)="toggleFeatures()"
-        aria-label="Toggle features list">
-        @if (showFeatures()) {
-          Hide Features
-        } @else {
-          Show Features
-        }
-      </button>
-    </div>
-
-    @if (showFeatures()) {
-      <ul class="features-list" role="list">
-        @for (feature of features(); track feature.label) {
-          <li class="feature-item">
-            <span class="feature-icon">{{ feature.icon }}</span>
-            <span class="feature-label">{{ feature.label }}</span>
-          </li>
-        } @empty {
-          <li>No features available</li>
-        }
-      </ul>
-    }
-  </section>
-
-  <footer class="popup-footer">
-    <p>Built with Angular 21</p>
-  </footer>
-</main>
+<mat-card class="content-card">
+  <mat-card-content>
+    <p>Welcome to grepHuman</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-flat-button color="primary">Get Started</button>
+  </mat-card-actions>
+</mat-card>
