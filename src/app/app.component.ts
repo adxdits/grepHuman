@@ -1,21 +1,20 @@
-import { Component, ChangeDetectionStrategy, signal } from '@angular/core';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-import { MatCardModule } from '@angular/material/card';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { PopupContainerComponent } from './features/popup/containers/popup-container/popup-container.component';
 
+/**
+ * Root application component
+ * Renders the popup container for the Chrome extension
+ */
 @Component({
   selector: 'app-root',
-  imports: [
-    MatToolbarModule,
-    MatButtonModule,
-    MatIconModule,
-    MatCardModule
-  ],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
+  standalone: true,
+  imports: [PopupContainerComponent],
+  template: `<app-popup-container />`,
+  styles: `
+    :host {
+      display: block;
+    }
+  `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent {
-  title = signal('grepHuman');
-}
+export class AppComponent {}

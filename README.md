@@ -1,108 +1,71 @@
-# grepHuman
+<p align="center">
+  <img src="public/icons/logo.png" alt="grepHuman" width="280" />
+</p>
 
-A Chrome extension built with Angular 21.
+<h1 align="center">grepHuman</h1>
 
-## Development
+<p align="center">
+  Chrome extension that labels Google search results so you can tell what's real and what's AI slop.
+</p>
 
-### Install dependencies
+---
+
+## Why
+
+I got tired of it. Every article I open is the same recycled garbage. "In today's fast-paced digital landscape" — shut up. You can feel it in your gut when something was written by ChatGPT. The same filler words, the same structure, the same nothing.
+
+So I thought: the older the article, the more likely a human actually wrote it. Anything before November 30, 2022 (when ChatGPT launched) is guaranteed human. After that? Roll the dice.
+
+I built this tool to put that info right on the search results page. No clicking, no guessing. You see a green badge, you know a person wrote that. You see red, it's slop.
+
+## What it does
+
+grepHuman runs on Google search pages and adds a badge next to every result:
+
+- **✓ Not AI** (green) — Published before ChatGPT existed. 100% human.
+- **⚠ Maybe AI** (orange) — Published after Nov 30, 2022. Could go either way.
+- **✖ AI Slop** (red) — The snippet is full of ChatGPT-speak. Emojis as bullet points, "dive into", "let's explore", "in today's digital landscape", the whole package.
+
+You can also:
+- Toggle labels on/off
+- Hide AI/slop results entirely
+- Show them back whenever you want
+
+## Slop detection
+
+The extension scans the search result snippet for patterns that ChatGPT loves:
+
+- Filler phrases like "delve into", "harness the power", "game changer", "buckle up", "seamlessly", "cutting-edge", "navigate the complexities"
+- Emoji spam and emojis used as list bullets (🔥 Title: ...)
+- Hype emojis everywhere (🚀✅💡🎯⭐)
+- Exclamation mark abuse
+
+Each pattern adds to a slop score. Cross the threshold and you get the red badge.
+
+## Install
 
 ```bash
 npm install
-```
-
-### Development server
-
-```bash
-npm start
-```
-
-Navigate to `http://localhost:4200/` to preview the popup during development.
-
-### Build for Chrome
-
-```bash
 npm run build
 ```
 
-The extension will be built to `dist/grephuman/browser/`.
+Then load it in Chrome:
 
-## Load in Chrome
-
-1. Open Chrome and go to `chrome://extensions/`
-2. Enable **Developer mode** (toggle in top right)
+1. Go to `chrome://extensions/`
+2. Turn on **Developer mode** (top right)
 3. Click **Load unpacked**
-4. Select the `dist/grephuman/browser` folder
-5. The extension icon will appear in your toolbar
+4. Select `dist/grephuman/browser`
 
-## Project Structure
+Done. Open a Google search and you'll see the badges.
 
-```
-src/
-├── app/
-│   ├── app.component.ts      # Main popup component
-│   ├── app.component.html    # Popup template
-│   ├── app.component.scss    # Popup styles
-│   └── app.config.ts         # App configuration
-├── index.html                # Entry HTML
-├── main.ts                   # Bootstrap
-└── styles.scss               # Global styles
+## Dev
 
-public/
-└── manifest.json             # Chrome extension manifest
+```bash
+npm start        # dev server at localhost:4200
+npm run build    # production build
+npm run watch    # build + watch
 ```
 
-## Adding Chrome APIs
+## License
 
-Chrome types are already installed. Use the `chrome` global in your services:
-
-```typescript
-import { Injectable } from '@angular/core';
-
-@Injectable({ providedIn: 'root' })
-export class StorageService {
-  async get<T>(key: string): Promise<T | undefined> {
-    const result = await chrome.storage.local.get(key);
-    return result[key];
-  }
-
-  async set(key: string, value: unknown): Promise<void> {
-    await chrome.storage.local.set({ [key]: value });
-  }
-}
-```
-
-Remember to add required permissions to `manifest.json`:
-
-```json
-{
-  "permissions": ["storage"]
-}
-```
-
-## Adding Custom Icons
-
-Add your icons to `public/icons/` and update `manifest.json`:
-
-```json
-{
-  "action": {
-    "default_icon": {
-      "16": "icons/icon-16.png",
-      "48": "icons/icon-48.png",
-      "128": "icons/icon-128.png"
-    }
-  },
-  "icons": {
-    "16": "icons/icon-16.png",
-    "48": "icons/icon-48.png",
-    "128": "icons/icon-128.png"
-  }
-}
-```
-
-## Scripts
-
-- `npm start` - Start development server
-- `npm run build` - Build for production
-- `npm test` - Run unit tests
-- `npm run watch` - Build and watch for changes
+Do whatever you want with it.

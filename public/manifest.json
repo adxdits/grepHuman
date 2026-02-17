@@ -1,11 +1,11 @@
 {
   "manifest_version": 3,
   "name": "grepHuman",
-  "description": "A Chrome extension built with Angular",
+  "description": "Detect if webpage content is AI-generated or human-written based on publication date analysis",
   "version": "1.0.0",
   "action": {
     "default_popup": "index.html",
-    "default_title": "Open grepHuman",
+    "default_title": "Analyze page content",
     "default_icon": {
       "16": "icons/logoSquare.png",
       "48": "icons/logoSquare.png",
@@ -17,5 +17,26 @@
     "48": "icons/logoSquare.png",
     "128": "icons/logoSquare.png"
   },
-  "permissions": []
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content-script.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  }
 }
