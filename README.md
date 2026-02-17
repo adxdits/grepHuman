@@ -67,4 +67,10 @@ npm start        # dev server at localhost:4200
 npm run build    # production build
 npm run watch    # build + watch
 ```
+## Privacy Policy for grepHuman
 
+grepHuman does not collect or use any personal information from users.
+The extension only analyzes the snippets of Google search results to indicate whether the content is likely written by a human or AI.
+No other user data is collected, stored, or shared.
+
+Contact: adamalmounayar@hotmail.com
