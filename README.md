@@ -66,6 +66,3 @@ npm run build    # production build
 npm run watch    # build + watch
 ```
 
-## License
-
-Do whatever you want with it.
