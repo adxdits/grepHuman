@@ -9,6 +9,8 @@
 </p>
 
 ---
+<img width="1512" height="756" alt="Screenshot 2026-02-17 at 21 49 02" src="https://github.com/user-attachments/assets/3a7cc7a2-1c26-4a7a-80d2-fbba2425d8b3" />
+
 
 ## Why
 
